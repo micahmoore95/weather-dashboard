@@ -1,12 +1,13 @@
-var search = document.querySelector("#search")
-var currentDay = document.querySelector("#today")
-
+var searchBar = document.getElementById("#search-bar");
+var currentDay = document.querySelector("#today");
+var searchBtn = document.getElementById("search-btn");
+console.log(searchBtn);
 
 var apiKey = "3fe813626b12b8d2b8762d1a88477d61"
 
 //call API to get weather data
 function fetchWeather(lat, lon, city) {
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid='+apiKey
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&dt&appid='+apiKey
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
             response.json()
@@ -17,7 +18,12 @@ function fetchWeather(lat, lon, city) {
     })
 }
 
-fetchWeather();
+function citySearch() {
+    var city = searchBar;
+    fetchWeather(city);
+};
+
+searchBtn.addEventListener('click', citySearch);
 
 //put weather data into current day box
 
@@ -27,5 +33,5 @@ fetchWeather();
 
 //show recently searched cities under searchbar
 
-//populate data on city submit
+//populate data on city submit 
 
