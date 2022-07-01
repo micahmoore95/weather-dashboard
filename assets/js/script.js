@@ -1,8 +1,10 @@
-var searchBar = document.getElementById("#search-bar");
+var searchBar = document.querySelector("#searchbar");
 var currentDay = document.querySelector("#today");
 var searchBtn = document.getElementById("search-btn");
-console.log(searchBtn);
-
+var cityResult = document.querySelector('#city-result');
+var tempEl = document.querySelector('#temp');
+var windEl = document.querySelector('#wind');
+var uvIndexEl = document.querySelector('#uv-index');
 
 //get todays date
 var getDate = function() {
@@ -86,7 +88,7 @@ var getWeather = function(lat, lon, city) {
 }
 
 var displayWeatherData = function(data, city) {
-    citySearchedEl.textContent = "City: " + city;
+    cityResult.textContent = "City: " + city;
 
     // Current Weather Data
     var currentTemp = data.current.temp;
@@ -113,8 +115,6 @@ var displayWeatherData = function(data, city) {
     
 }
 
-searchBtn.addEventListener("click", searchSubmit);
 
-
-
+searchBtn.addEventListener("submit", searchSubmit);
 displayHeaders();

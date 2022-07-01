@@ -16,20 +16,25 @@
     <div class="header container-fluid text-center bg-success p-2 text-white" style="--bs-bg-opacity: .5;">
         <h1>Weather Dashboard</h1>
     </div>
-
-    <div class="row">
-        <div class="search col-2">
-            <input type="search" id="search-bar" placeholder="Please enter a Zip Code">
-            <button id="search-btn" >Search</button>
+    <div class="row ">
+        <div class="card">
+            <div class="search col-md-auto">
+                <form id="search-btn">
+                    <h2>Search:</h2>
+                    <input name="searchbar" id="searchbar" placeholder="Enter a zip code"></input>
+                    <input type="submit" value="Submit" class="btn submit-btn" id="submit-btn">
+                </form>
+            </div>
         </div>
-        <div id="current-weather" class="main-section-1">
-            <h2 id="city-searched">Todays temperature in</h2>
-            <p id="temp">Temperature:</p>
-            <p id="wind">Wind:</p>
-            <p id="uv-index">UV-Index:</p>
-        </div>
+        <div class="card">
+            <div id="current-weather" class=" col col-lg-auto">
+                <h2 id="city-result">Todays temperature in</h2>
+                <p id="temp">Temperature:</p>
+                <p id="wind">Wind:</p>
+                <p id="uv-index">UV-Index:</p>
+            </div>
+        </div
     </div>
-
     
     <div class="card-group p-4 ">
         <div id="forecast" class="main-section-2">
