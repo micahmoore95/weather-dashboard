@@ -18,6 +18,19 @@ var displayHeaders = function() {
     document.querySelector("#forecast-5").textContent = moment().add(5, "d").format("dddd");
 };
 
+var searchSubmit = function(event) {
+    event.preventDefault();
+
+    var zipCode = searchBar.value.trim();
+    
+    if (zipCode) {
+        getLatAndLon(zipCode);
+        searchBar.value = "";
+    } else {
+        alert("Please enter a valid zip code.");
+    }
+}
+
 
 var getLatAndLon = function(location) {
     var geoUrl = "https://api.openweathermap.org/geo/1.0/zip?zip=" + location + "&appid=a9001a7bcfd8e28a15abc3788c265862";
@@ -71,6 +84,36 @@ var getWeather = function(lat, lon, city) {
         alert("Unable to find weather data. Please try again later or search for a different city.");
     });
 }
+
+var displayWeatherData = function(data, city) {
+    citySearchedEl.textContent = "City: " + city;
+
+    // Current Weather Data
+    var currentTemp = data.current.temp;
+    var currentWind = data.current.wind_speed;
+    var currentUV = data.current.uvi;
+
+    tempEl.textContent = "Temperature: " + currentTemp + "°F";
+    windEl.textContent = "Wind Speed: " + currentWind + " MPH";
+    uvIndexEl.textContent = "UV Index: " + currentUV;
+
+
+    // Five Day Forecast
+    
+    // Temp
+    for (let i = 1; i < 6; i++) {
+        document.querySelector("#temp-"+i).textContent = "Temp: " + data.daily[i].temp.day + "°F";
+    }
+
+    // Wind
+    for (let i = 1; i < 6; i++) {
+        document.querySelector("#wind-"+i).textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
+    }
+
+    
+}
+
+searchBtn.addEventListener("click", searchSubmit);
 
 
 
