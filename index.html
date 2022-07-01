@@ -22,26 +22,45 @@
             <input type="search" id="search-bar">
             <button id="search-btn">Search</button>
         </div>
-        <div class="today card col-10">
-            <h2>Today's Weather in </h2>
+        <div id="current-weather" class="main-section-1">
+            <h2 id="city-searched">Todays temperature in</h2>
+            <p id="temp">Temperature:</p>
+            <p id="wind">Wind:</p>
+            <p id="uv-index">UV-Index:</p>
         </div>
     </div>
 
-    <div class="5day row float-right p-4">
-        <div class="card col-2">
-            <h3>Future Date</h3>
-        </div>
-        <div class="card col-2">
-            <h3>Future Date</h3>
-        </div>
-        <div class="card col-2">
-            <h3>Future Date</h3>
-        </div>
-        <div class="card col-2">
-            <h3>Future Date</h3>
-        </div>
-        <div class="card col-2">
-            <h3>Future Date</h3>
+    
+    <div class="card-group p-4 ">
+        <div id="forecast" class="main-section-2">
+            <h2 class="section-2-header">And the next 5 days:</h2>
+            <div class="card-container row">
+                <div class="card p-4" id="day-one">
+                    <h2 id="day-one-header">Placeholder</h2>
+                    <p id="temp-1">Temp:</p>
+                    <p id="wind-1">Wind:</p>
+                </div>
+                <div class="card p-4" id="day-two">
+                    <h2 id="day-two-header">Placeholder</h2>
+                    <p id="temp-2">Temp:</p>
+                    <p id="wind-2">Wind:</p>
+                </div>
+                <div class="card p-4" id="day-three">
+                    <h2 id="day-three-header">Placeholder</h2>
+                    <p id="temp-3">Temp:</p>
+                    <p id="wind-3">Wind:</p>
+                </div>
+                <div class="card p-4" id="day-four">
+                    <h2 id="day-four-header">Placeholder</h2>
+                    <p id="temp-4">Temp:</p>
+                    <p id="wind-4">Wind:</p>
+                </div>
+                <div class="card p-4" id="day-five">
+                    <h2 id="day-five-header">Placeholder</h2>
+                    <p id="temp-5">Temp:</p>
+                    <p id="wind-5">Wind:</p>
+                </div>
+            </div>
         </div>
     </div>
 

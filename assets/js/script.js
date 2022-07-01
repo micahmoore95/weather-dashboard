@@ -7,7 +7,7 @@ var apiKey = "3fe813626b12b8d2b8762d1a88477d61"
 
 //call API to get weather data
 function fetchWeather(lat, lon, city) {
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&dt&appid='+apiKey
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&dt&appid=3fe813626b12b8d2b8762d1a88477d61'
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
             response.json()
