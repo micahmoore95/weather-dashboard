@@ -3,19 +3,6 @@ var currentDay = document.querySelector("#today");
 var searchBtn = document.getElementById("search-btn");
 console.log(searchBtn);
 
-var apiKey = "3fe813626b12b8d2b8762d1a88477d61"
-//call API to get weather data
-function fetchWeather(lat, lon, city) {
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&dt&appid=3fe813626b12b8d2b8762d1a88477d61'
-    fetch(apiUrl).then(function(response) {
-        if(response.ok) {
-            response.json()
-                .then(function(data) {
-                    console.log(data);
-                })
-        }
-    })
-}
 
 //get todays date
 var getDate = function() {
@@ -31,5 +18,60 @@ var displayHeaders = function() {
     document.querySelector("#forecast-5").textContent = moment().add(5, "d").format("dddd");
 };
 
- 
+
+var getLatAndLon = function(location) {
+    var geoUrl = "https://api.openweathermap.org/geo/1.0/zip?zip=" + location + "&appid=a9001a7bcfd8e28a15abc3788c265862";
+
+    fetch(geoUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                var lat = getLat(data);
+                var lon = getLon(data);
+                var cityName = getCityName(data);
+
+                getWeather(lat, lon, cityName);
+            });
+        } else {
+            alert("Please enter a valid Zip Code.");
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to find weather data. Please try again later or search for a different city.");
+    });
+}
+var getLat = function(zip) {
+    return zip.lat;
+}
+
+var getLon = function(zip) {
+    return zip.lon;
+}
+
+var getCityName = function(zip) {
+    return zip.name;
+}
+
+var getWeather = function(lat, lon, city) {
+    console.log(city);
+
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=a9001a7bcfd8e28a15abc3788c265862";
+
+    fetch(weatherUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                console.log(data);
+
+                displayWeatherData(data, city);
+            });
+        } else {
+            alert("Please enter a valid Zip Code.");
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to find weather data. Please try again later or search for a different city.");
+    });
+}
+
+
+
 displayHeaders();
